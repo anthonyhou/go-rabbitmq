@@ -12,7 +12,7 @@ import (
 
 func main() {
 	conn, err := rabbitmq.NewConn(
-		"amqp://guest:guest@localhost",
+		"amqp://guest:guest@10.70.36.165",
 		rabbitmq.WithConnectionOptionsLogging,
 	)
 	if err != nil {
@@ -27,9 +27,9 @@ func main() {
 			// rabbitmq.Ack, rabbitmq.NackDiscard, rabbitmq.NackRequeue
 			return rabbitmq.Ack
 		},
-		"my_queue",
-		rabbitmq.WithConsumerOptionsRoutingKey("my_routing_key"),
-		rabbitmq.WithConsumerOptionsExchangeName("events"),
+		"DBMON_critical",
+		rabbitmq.WithConsumerOptionsRoutingKey("DBMON_critical"),
+		rabbitmq.WithConsumerOptionsExchangeName("TWMALERT"),
 		rabbitmq.WithConsumerOptionsExchangeDeclare,
 	)
 	if err != nil {

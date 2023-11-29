@@ -29,7 +29,7 @@ func getDefaultConsumerOptions(queueName string) ConsumerOptions {
 		ExchangeOptions: ExchangeOptions{
 			Name:       "",
 			Kind:       amqp.ExchangeDirect,
-			Durable:    false,
+			Durable:    true,
 			AutoDelete: false,
 			Internal:   false,
 			NoWait:     false,
